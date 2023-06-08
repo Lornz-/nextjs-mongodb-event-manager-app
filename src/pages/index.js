@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
 import styled from 'styled-components';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -54,7 +53,7 @@ const Grid = styled.div`
   max-width: 100%;
 `;
 
-const Card = styled.div`
+const Card = styled.a`
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
@@ -80,18 +79,18 @@ const Card = styled.div`
   }
 
   @media (hover: hover) and (pointer: fine) {
-    :hover {
+    &:hover {
       background: rgba(var(--card-rgb), 0.1);
       border: 1px solid rgba(var(--card-border-rgb), 0.15);
     }
 
-    :hover span {
+    &:hover span {
       transform: translateX(4px);
     }
   }
 
   @media (prefers-reduced-motion) {
-    :hover span {
+    &:hover span {
       transform: none;
     }
   }
@@ -104,21 +103,21 @@ const Center = styled.div`
   position: relative;
   padding: 4rem 0;
 
-  ::before {
+  &::before {
     background: var(--secondary-glow);
     border-radius: 50%;
     width: 480px;
     height: 360px;
     margin-left: -400px;
   }
-  ::after {
+  &::after {
     background: var(--primary-glow);
     width: 240px;
     height: 180px;
     z-index: -1;
   }
-  ::before,
-  ::after {
+  &::before,
+  &::after {
     content: '';
     left: 50%;
     position: absolute;
@@ -127,13 +126,13 @@ const Center = styled.div`
   }
 `;
 
-const VercelLogo = styled.div`
+const VercelLogo = styled(Image)`
   @media (prefers-color-scheme: dark) {
     filter: invert(1);
   }
 `;
 
-const Logo = styled.div`
+const Logo = styled(Image)`
   position: relative;
 
   @media (prefers-color-scheme: dark) {
@@ -164,21 +163,13 @@ export default function Home() {
               rel="noopener noreferrer"
             >
               By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
+              <VercelLogo src="/vercel.svg" width={100} height={24} priority />
             </a>
           </div>
         </Description>
 
         <Center>
-          <Image
-            className={styles.logo}
+          <Logo
             src="/next.svg"
             alt="Next.js Logo"
             width={180}
@@ -188,9 +179,8 @@ export default function Home() {
         </Center>
 
         <Grid>
-          <a
+          <Card
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -200,11 +190,10 @@ export default function Home() {
             <p>
               Find in-depth information about Next.js features and&nbsp;API.
             </p>
-          </a>
+          </Card>
 
-          <a
+          <Card
             href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -214,11 +203,10 @@ export default function Home() {
             <p>
               Learn about Next.js in an interactive course with&nbsp;quizzes!
             </p>
-          </a>
+          </Card>
 
-          <a
+          <Card
             href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -228,11 +216,10 @@ export default function Home() {
             <p>
               Discover and deploy boilerplate example Next.js&nbsp;projects.
             </p>
-          </a>
+          </Card>
 
-          <a
+          <Card
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -243,7 +230,7 @@ export default function Home() {
               Instantly deploy your Next.js site to a shareable URL
               with&nbsp;Vercel.
             </p>
-          </a>
+          </Card>
         </Grid>
       </Main>
     </>
