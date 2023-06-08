@@ -4,7 +4,7 @@ import request from 'supertest';
 
 export const testClient = (handler) =>
   request(
-    createServer(async (req, res) => {
-      return apiResolver(req, res, undefined, handler);
-    })
+    createServer(async (req, res) =>
+      apiResolver(req, res, undefined, handler, {}, true)
+    )
   );
