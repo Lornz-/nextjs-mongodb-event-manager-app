@@ -7,7 +7,7 @@ beforeAll(async () => await db.connect());
 afterAll(async () => await db.close());
 beforeEach(async () => await db.clear());
 
-describe('Create a new event', () => {
+describe('Create', () => {
   const event = {
     name: 'name',
     description: 'description',
@@ -58,7 +58,6 @@ describe('Create a new event', () => {
       const newEvent = new Event(invalidEvent);
       await newEvent.save();
     } catch (error) {
-      console.log(error.errors);
       expect(error).toBeInstanceOf(mongoose.Error.ValidationError);
       expect(error.errors.startDate).toBeDefined();
     }
