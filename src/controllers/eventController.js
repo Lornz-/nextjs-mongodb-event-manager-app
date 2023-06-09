@@ -9,7 +9,7 @@ import { createEventValidated } from '@/services/event/createEventValidated';
  * @param {string} userObj.name - The name of the new event.
  * @param {string} userObj.description - The description of the new event.
  * @param {string} userObj.startDate - The start date of the new event.
- * @param {string} userObj.endDate - The end date og the new event.
+ * @param {string} userObj.endDate - The end date of the new event.
  * @returns {Promise<{user: {}}|{error: {message: string, code: number}}>} Resolves to an object with either a `event`
  * property, containing the newly created event document, or an `error`.
  * @throws {Error} If an error occurs while creating the event.
