@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-// vendors
+// vendors
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import dbConnect from '../dbConnect';
