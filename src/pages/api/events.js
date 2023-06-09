@@ -1,25 +1,21 @@
 // vendors
 import { createRouter } from 'next-connect';
 
-// middleware
+// middlewares
 import middleware from '@/middlewares/middleware';
-
-// models
-import Event from '@/models/event';
-import { jsonParser } from '@/utils/bodyParser';
 import { validateBody } from '@/middlewares/validateBody';
+
+// utils
+import { jsonParser } from '@/utils/bodyParser';
 import { ValidateProps } from '@/config/constants';
 
+// controllers
 import * as eventController from '@/controllers/eventController';
 
 const router = createRouter();
 
 router
   .use(middleware)
-  .get(async (req, res) => {
-    const events = await Event.find({});
-    res.json({ success: true, data: events });
-  })
   .post(
     jsonParser,
     validateBody(
@@ -37,7 +33,8 @@ router
       true
     ),
     eventController.createEvent
-  );
+  )
+  .get(eventController.getEvents);
 
 // this will run if none of the above matches
 router.all((req, res) => {

@@ -2,6 +2,19 @@ import { httpError } from '@/lib/helpers/HttpError';
 import isDateValid from '@/utils/isDateValid';
 import Event from '@/models/event';
 
+/**
+ * Validates user input and creates a new event.
+ *
+ * @async
+ * @param {object} userObj - An object containing user input data.
+ * @param {string} userObj.name - The name of the new event.
+ * @param {string} userObj.description - The description of the new event.
+ * @param {string} userObj.startDate - The start date of the new event.
+ * @param {string} userObj.endDate - The end date of the new event.
+ * @returns {Promise<{event: {}}|{error: {message: string, code: number}}>} Resolves to an object with either a `event`
+ * property, containing the newly created event document, or an `error`.
+ * @throws {Error} If an error occurs while creating the event.
+ */
 export const createEventValidated = async ({
   name,
   description,
