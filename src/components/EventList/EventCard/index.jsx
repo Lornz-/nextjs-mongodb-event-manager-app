@@ -5,12 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // styles
-import { Container, StyledEventCard, Wrapper } from './EventCard.styles';
+import { Container, Date, StyledEventCard, Wrapper } from './EventCard.styles';
+import Stack from '@/components/LayoutSections/Stack';
 
-const EventCard = ({ name, description, start, end }) => {
+const EventCard = ({ name, description, start, end, faded, ...rest }) => {
   return (
-    <StyledEventCard as={Link} href="#">
-      <Wrapper rounded padded overlaid>
+    <StyledEventCard as={Link} href="#" {...rest}>
+      <Wrapper rounded padded overlaid $faded={faded}>
         <Container>
           <div
             css={`
@@ -39,7 +40,8 @@ const EventCard = ({ name, description, start, end }) => {
             <h3>{name}</h3>
             {/* <div>{description}</div> */}
           </div>
-          <div
+          <Stack
+            space="3px"
             css={`
               grid-column: 3;
               grid-row: 1;
@@ -47,10 +49,11 @@ const EventCard = ({ name, description, start, end }) => {
             `}
           >
             <strong>Starts</strong>
-            <div>{start.date}</div>
+            <Date>{start.date}</Date>
             <div>{start.time}</div>
-          </div>
-          <div
+          </Stack>
+          <Stack
+            space="3px"
             css={`
               grid-column: 4;
               grid-row: 1;
@@ -58,9 +61,9 @@ const EventCard = ({ name, description, start, end }) => {
             `}
           >
             <strong>Ends</strong>
-            <div>{end.date}</div>
+            <Date>{end.date}</Date>
             <div>{end.time}</div>
-          </div>
+          </Stack>
         </Container>
       </Wrapper>
     </StyledEventCard>
@@ -90,6 +93,13 @@ EventCard.propTypes = {
     date: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
   }).isRequired,
+  /**
+   * whether applying a faded style or not
+   */
+  faded: PropTypes.bool,
+};
+EventCard.defaultProps = {
+  faded: false,
 };
 
 export default EventCard;

@@ -1,5 +1,6 @@
 // vendors
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-hot-toast';
@@ -16,6 +17,7 @@ import TextInputField from '../TextInputField';
 import TextAreaField from '../TextAreaField';
 import Switcher from '../LayoutSections/Switcher';
 import Button from '../Button';
+import { useModal } from '../Modal/Modal.context';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -55,6 +57,7 @@ const initialValues = {
 };
 
 const EventForm = ({ onSubmit }) => {
+  const { close } = useModal();
   const router = useRouter();
 
   const handleSubmit = useCallback(
@@ -66,8 +69,10 @@ const EventForm = ({ onSubmit }) => {
       try {
         await onSubmit(event);
 
-        toast.success('Event created successfully', { duration: 3000 });
-        router.reload();
+        toast.success('Event created successfully', { duration: 2000 });
+
+        setTimeout(() => router.reload(), 2000);
+
         close();
       } catch (error) {
         toast.error(error);
@@ -75,7 +80,7 @@ const EventForm = ({ onSubmit }) => {
         actions.setSubmitting(false);
       }
     },
-    [onSubmit, router]
+    [close, onSubmit, router]
   );
   return (
     <>
@@ -165,6 +170,10 @@ const EventForm = ({ onSubmit }) => {
       </Formik>
     </>
   );
+};
+
+EventForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default EventForm;

@@ -1,8 +1,21 @@
 // vendors
-import { styled } from 'styled-components';
+import { css, styled } from 'styled-components';
 
 // components
 import Paper from '@/components/Paper';
+
+export const fadedStyle = css`
+  opacity: 0.5;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity var(--animation-speed-default) ease;
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   display: grid;
@@ -30,4 +43,11 @@ export const Wrapper = styled(Paper)`
       background-color: var(--color-light-grey);
     }
   }
+
+  ${({ $faded }) => $faded && fadedStyle};
+`;
+
+export const Date = styled.div`
+  font-size: var(--font-size-20);
+  font-weight: 600;
 `;

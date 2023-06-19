@@ -1,5 +1,5 @@
 // vendors
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 // utils
 import randomString from '@/utils/math/randomString';
@@ -14,9 +14,6 @@ import EventForm from '@/components/EventForm';
 import Center from '@/components/LayoutSections/Center';
 import CloseButton from '@/components/CloseButton';
 import { useModal } from '@/components/Modal/Modal.context';
-import { useRouter } from 'next/router';
-import { toast } from 'react-hot-toast';
-import normalize from '@/utils/normalize';
 import { fetcher } from '@/utils/fetch';
 
 // images
@@ -25,6 +22,7 @@ import IconPlus from '@/images/IconPlus';
 // styles
 import { h1Style } from '@/styles/global';
 import {
+  Container,
   ModalContent,
   ModalHeader,
   Title,
@@ -32,6 +30,9 @@ import {
   modalTitleStyle,
   wrapperStyle,
 } from './EventsPageView.styles';
+import Stack from '@/components/LayoutSections/Stack';
+import { em } from 'polished';
+import VectorLoader from '@/images/VectorLoader';
 
 const EventsPageView = ({ events, isLoading }) => {
   const { isOpen, open, close } = useModal();
@@ -51,9 +52,25 @@ const EventsPageView = ({ events, isLoading }) => {
       }),
     });
 
+  const pastEvents = useMemo(
+    () =>
+      events.filter(
+        (event) => new Date(event.startDate).getTime() < new Date().getTime()
+      ),
+    [events]
+  );
+
+  const upcomingEvents = useMemo(
+    () =>
+      events.filter(
+        (event) => new Date(event.startDate).getTime() > new Date().getTime()
+      ),
+    [events]
+  );
+
   return (
     <>
-      <div>
+      <Container>
         <div
           css={`
             display: flex;
@@ -70,28 +87,82 @@ const EventsPageView = ({ events, isLoading }) => {
           />
         </div>
 
-        <section>
-          <Title>
-            <h2 css={h2Style}>Your upcoming events</h2>
-          </Title>
+        <Stack space="calc(var(--container-gutters) * 2)">
+          <section>
+            <Title>
+              <h2 css={h2Style}>Your upcoming events</h2>
+            </Title>
 
-          {isLoading ? (
-            <Center intrinsic>Loading...</Center>
-          ) : (
-            <EventList>
-              {events.map((event) => (
-                <EventCard
-                  key={`event-${event.name}`}
-                  name={event.name}
-                  description={event.description}
-                  start={event.start}
-                  end={event.end}
-                />
-              ))}
-            </EventList>
+            {isLoading ? (
+              <Center
+                intrinsic
+                css={`
+                  padding: ${em(90)} 0;
+                `}
+              >
+                <VectorLoader fill="var(--color-accent)" />
+              </Center>
+            ) : (
+              <>
+                {upcomingEvents.length === 0 && (
+                  <Center
+                    intrinsic
+                    css={`
+                      padding: ${em(90)} 0;
+                    `}
+                  >
+                    No event found -_-
+                  </Center>
+                )}
+
+                <EventList>
+                  {upcomingEvents.map((event) => (
+                    <EventCard
+                      key={`event-${event.name}`}
+                      name={event.name}
+                      description={event.description}
+                      start={event.start}
+                      end={event.end}
+                    />
+                  ))}
+                </EventList>
+              </>
+            )}
+          </section>
+
+          {pastEvents.length > 0 && (
+            <section>
+              <Title>
+                <h2 css={h2Style}>Your past events</h2>
+              </Title>
+
+              {isLoading ? (
+                <Center
+                  intrinsic
+                  css={`
+                    padding: ${em(90)} 0;
+                  `}
+                >
+                  <VectorLoader fill="var(--color-accent)" />
+                </Center>
+              ) : (
+                <EventList>
+                  {pastEvents.map((event) => (
+                    <EventCard
+                      key={`event-${event.name}`}
+                      name={event.name}
+                      description={event.description}
+                      start={event.start}
+                      end={event.end}
+                      faded
+                    />
+                  ))}
+                </EventList>
+              )}
+            </section>
           )}
-        </section>
-      </div>
+        </Stack>
+      </Container>
 
       <Modal
         isOpen={isOpen}

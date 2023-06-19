@@ -1,4 +1,10 @@
+// vendors
 import { css, styled } from 'styled-components';
+import { em } from 'polished';
+
+export const Container = styled.div`
+  padding-bottom: ${em(90)};
+`;
 
 export const Title = styled.div`
   padding: 16px 0;
