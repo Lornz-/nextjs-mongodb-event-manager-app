@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 // images
+import IconCalendar from '@/images/IconCalendar';
 import IconHome from '@/images/IconHome';
 
 // styles
@@ -18,6 +19,10 @@ const NavSidebar = () => {
           <Link href="/">
             <IconHome />
             <span>Home</span>
+          </Link>
+          <Link href="/events">
+            <IconCalendar />
+            <span>Events</span>
           </Link>
         </Nav>
       </NavWrapper>

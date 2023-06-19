@@ -58,11 +58,11 @@ const TextInputField = ({
         />
       </FormLabel>
 
-      {helperText && (
+      {helperText ? (
         <FormHelperText id={helperTextId} disabled={disabled} error={error}>
           {helperText}
         </FormHelperText>
-      )}
+      ) : undefined}
     </>
   );
 };

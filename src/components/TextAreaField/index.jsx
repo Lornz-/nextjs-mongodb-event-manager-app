@@ -7,7 +7,7 @@ import randomString from '@/utils/math/randomString';
 
 // components
 import FormHelperText from '../FormHelperText';
-import FormLabel, { formLabelStyles } from '../FormLabel';
+import FormLabel from '../FormLabel';
 import TextArea from './TextArea';
 
 const TextAreaField = ({
@@ -40,8 +40,6 @@ const TextAreaField = ({
         css={`
           display: flex;
           flex-flow: column;
-
-          ${formLabelStyles.floatingLabelStyle};
         `}
         {...rest}
       >
@@ -65,11 +63,11 @@ const TextAreaField = ({
         />
       </FormLabel>
 
-      {helperText && (
+      {helperText ? (
         <FormHelperText id={helperTextId} disabled={disabled} error={error}>
           {helperText}
         </FormHelperText>
-      )}
+      ) : undefined}
     </>
   );
 };

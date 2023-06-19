@@ -50,7 +50,9 @@ const Modal = ({
       preventScroll
       {...props}
     >
-      {!noClose && <CloseButton onClose={onClose} darked={bgColor} />}
+      {!noClose ? (
+        <CloseButton onClose={onClose} darked={bgColor} />
+      ) : undefined}
 
       <ContentWrapper>{children}</ContentWrapper>
     </StyledModal>

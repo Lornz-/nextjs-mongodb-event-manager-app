@@ -15,7 +15,7 @@ import selectSpace from '@/utils/selectSpace';
  *
  * @example
  *
- * <Switcher threshold='480px' space='1rem' limit='3'>
+ * <Switcher threshold='480px' space='1rem' limit={3}>
  *   <div> <!-- intermediary wrapper (required) -->
  *     <div><!-- child element --></div>
  *     <div><!-- another child element --></div>
