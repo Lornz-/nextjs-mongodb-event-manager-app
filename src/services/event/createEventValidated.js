@@ -1,5 +1,5 @@
 import { httpError } from '@/lib/helpers/HttpError';
-import isDateValid from '@/utils/isDateValid';
+import { isDateValid } from '@/utils/date';
 import Event from '@/models/event';
 
 /**
