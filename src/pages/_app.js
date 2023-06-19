@@ -1,20 +1,27 @@
-import { ThemeProvider } from 'styled-components';
+// vendors
+import { Toaster } from 'react-hot-toast';
+
+// components
+import Layout from '@/components/Layout';
+import { ModalProvider } from '@/components/Modal/Modal.context';
+
+// styles
 import GlobalStyle from '@/styles/global';
 
-const theme = {
-  colors: {
-    primary: '#111',
-    secondary: '#0070f3',
-  },
-};
-
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <GlobalStyle />
+
+      <ModalProvider>
+        <Layout>
+          <Toaster position="bottom-right" />
+
+          <Component {...pageProps} />
+        </Layout>
+      </ModalProvider>
     </>
   );
 }
+
+export default App;
