@@ -1,6 +1,5 @@
 // vendors
-import { createGlobalStyle } from 'styled-components';
-import { css } from 'styled-components';
+import { css, createGlobalStyle } from 'styled-components';
 
 // styles
 import colors from './colors';
@@ -25,8 +24,6 @@ export const rootStyle = css`
   --radius-large: 24px;
 
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
 
   // button
   --btn-padding: 11px 24px;
@@ -51,9 +48,9 @@ export const htmlStyle = css`
 export const bodyStyle = css`
   color: rgb(var(--foreground-rgb));
   font-family: var(--font-sans-serif);
-  letter-spacing: var(--letter-spacing);
+  letter-spacing: var(--letter-spacing-sm);
 
-  background-color: white;
+  background-color: var(--color-white);
 
   /* &.Modal--open {
     overflow: hidden;
