@@ -1,14 +1,25 @@
 {
   "name": "nextjs-mongodb-events-manager-app",
+  "description": "An event app manager",
+  "auth": "Lornz-",
   "version": "0.1.0",
   "private": true,
+  "keywords": [
+    "nextjs",
+    "mongodb",
+    "mongoose",
+    "styled-components",
+    "app"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "test": "jest --silent",
-    "test-verbose": "jest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "jest",
+    "test:silent": "jest --silent",
+    "test:coverage": "jest --coverage",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
   },
   "dependencies": {
@@ -23,6 +34,7 @@
     "next": "13.4.4",
     "next-connect": "^1.0.0",
     "polished": "^4.2.2",
+    "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "2.4.0",
@@ -41,10 +53,16 @@
     "@testing-library/user-event": "^14.4.3",
     "babel-jest": "^29.5.0",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-formatjs": "^4.10.3",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jest-environment-node": "^29.5.0",
+    "lint-staged": "^13.2.2",
     "msw": "^1.2.2",
     "next-router-mock": "^0.9.6",
     "prettier": "^2.8.8",
@@ -52,5 +70,9 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{json,md}": "prettier --write"
   }
 }
