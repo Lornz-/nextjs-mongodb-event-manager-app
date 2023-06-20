@@ -3,10 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import Link from 'next/link';
+import { hideVisually } from 'polished';
+
+// components
+import Stack from '@/components/LayoutSections/Stack';
 
 // styles
 import { Container, Date, StyledEventCard, Wrapper } from './EventCard.styles';
-import Stack from '@/components/LayoutSections/Stack';
 
 const EventCard = ({ name, description, start, end, faded, ...rest }) => {
   return (
@@ -38,7 +41,7 @@ const EventCard = ({ name, description, start, end, faded, ...rest }) => {
             `}
           >
             <h3>{name}</h3>
-            {/* <div>{description}</div> */}
+            <div css={hideVisually}>{description}</div>
           </div>
           <Stack
             space="3px"
