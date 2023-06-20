@@ -1,14 +1,15 @@
 // vendors
 import React from 'react';
-import Link from 'next/link';
 
 // images
 import IconCalendar from '@/images/IconCalendar';
 import IconHome from '@/images/IconHome';
 
+// components
+import ActiveLink from '../ActiveLink';
+
 // styles
 import { Container, Nav, NavWrapper, Top } from './NavSidebar.styles';
-import ActiveLink from '../ActiveLink';
 
 const NavSidebar = () => {
   return (
