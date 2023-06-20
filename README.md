@@ -17,7 +17,7 @@ An event manager application with [Next.js](https://nextjs.org/), [MongoDB](http
 
 ### Stack
 
-**Client:** React 18, Next.js 13, Styled Components 6
+**Client:** React 18, Next.js 13, Styled Components 6, Formik, Yup
 
 **Server:** Next.js 13, Node 18, Mongoose 7
 
