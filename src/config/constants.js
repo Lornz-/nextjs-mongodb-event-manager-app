@@ -1,7 +1,7 @@
 export const ValidateProps = {
   event: {
     name: { type: 'string', minLength: 2, maxLength: 32 },
-    description: { type: 'string', minLength: 2, maxLength: 250 },
+    description: { type: 'string', minLength: 2, maxLength: 100 },
     startDate: { type: 'string' },
     endDate: { type: 'string' },
   },
@@ -15,7 +15,7 @@ export const ErrorMessages = {
       max: `Name needs to be between ${ValidateProps.event.name.minLength} to ${ValidateProps.event.name.maxLength} characters long.`,
     },
     description: {
-      required: 'Please enter a description of the event.',
+      required: 'Please enter a short description of the event.',
       min: `Description needs to be between ${ValidateProps.event.description.minLength} to ${ValidateProps.event.description.maxLength} characters long.`,
       max: `Description needs to be between ${ValidateProps.event.description.minLength} to ${ValidateProps.event.description.maxLength} characters long.`,
     },

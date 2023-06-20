@@ -1,17 +1,21 @@
+// vendors
 import mongoose from 'mongoose';
+
+// constants
+import { ValidateProps } from '@/config/constants';
 
 const EventSchema = new mongoose.Schema({
   name: {
     /* The name of the event */
     type: String,
     required: true,
-    maxLength: 32,
+    maxLength: ValidateProps.event.name.maxLength,
   },
   description: {
     /* The description of the event */
     type: String,
     required: true,
-    maxLength: 200,
+    maxLength: ValidateProps.event.description.maxLength,
   },
   startDate: {
     /* When the event starts */
