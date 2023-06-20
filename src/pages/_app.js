@@ -8,7 +8,7 @@ import { ModalProvider } from '@/components/Modal/Modal.context';
 // styles
 import GlobalStyle from '@/styles/global';
 
-function App({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
   return (
     <>
       <GlobalStyle />
@@ -22,6 +22,6 @@ function App({ Component, pageProps }) {
       </ModalProvider>
     </>
   );
-}
+};
 
 export default App;

@@ -1,4 +1,4 @@
-// vendors
+// vendors
 import mongoose from 'mongoose';
 
 // constants
