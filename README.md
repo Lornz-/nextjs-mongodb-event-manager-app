@@ -1,38 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Event Manager Application
 
-## Getting Started
+## Demo
 
-First, run the development server:
+## About the app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+An event manager application with [Next.js](https://nextjs.org/), [MongoDB](https://www.mongodb.com/), [Mongoose](https://mongoosejs.com/docs/) and a minimalist UI based on [Styled Components 💅](https://styled-components.com/docs).
+
+### Features
+
+- MVC Architecture
+- Full API Routes implementation and Serverless ready
+- [Middleware pattern](https://www.patterns.dev/posts/mediator-pattern), compatible with Express ecosystem, powered by [next-connect](https://github.com/hoangvvo/next-connect#readme)
+- Clean minimalist UI based on Styled Components
+
+### Stack
+
+**Client:** React 18, Next.js 13, Styled Components 6
+
+**Server:** Next.js 13, Node 18, Mongoose 7
+
+**Development:** Mongodb Memory Server, Jest, React Testing Library, MSW, ESLint, Prettier
+
+## Configuration
+
+### Step 1. Get the connection string of your MongoDB server
+
+In the case of MongoDB Atlas, it should be a string like this:
+
+```
+mongodb+srv://<username>:<password>@my-project-abc123.mongodb.net/test?retryWrites=true&w=majority
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For more details, follow this [MongoDB Guide](https://docs.mongodb.com/guides/server/drivers/) on how to connect to MongoDB.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Step 2. Set up environment variables
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Copy the `.env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+cp .env.local.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Then set each variable on `.env.local`:
 
-## Learn More
+- `MONGODB_URI` should be the MongoDB connection string you got from step 1.
 
-To learn more about Next.js, take a look at the following resources:
+### Step 3. Run Next.js in development mode
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install
+npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# or
 
-## Deploy on Vercel
+yarn install
+yarn dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Your app should be up and running on [http://localhost:3000](http://localhost:3000)! 🚀✨
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
