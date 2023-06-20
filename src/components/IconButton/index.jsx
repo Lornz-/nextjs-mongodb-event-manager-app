@@ -2,19 +2,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// utils
+import randomString from '@/utils/math/randomString';
+
 // styles
 import { IconWrapper, Label, StyledIconButton } from './IconButton.styles';
 
 const IconButton = ({ type, label, renderIcon, primary, ...rest }) => {
+  const labelId = randomString();
+
   const props = {
     type: type || `button`,
     ...rest,
   };
   return (
-    <StyledIconButton aria-labelledby="btn-label" {...props}>
+    <StyledIconButton aria-labelledby={labelId} {...props}>
       <IconWrapper $primary={primary}>{renderIcon}</IconWrapper>
 
-      <Label id="btn-label">{label}</Label>
+      <Label id={labelId}>{label}</Label>
     </StyledIconButton>
   );
 };
