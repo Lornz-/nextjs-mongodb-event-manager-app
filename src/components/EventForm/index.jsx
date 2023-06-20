@@ -14,7 +14,6 @@ import * as normalize from '@/utils/normalize';
 // components
 import Stack from '../LayoutSections/Stack';
 import TextInputField from '../TextInputField';
-import TextAreaField from '../TextAreaField';
 import Switcher from '../LayoutSections/Switcher';
 import Button from '../Button';
 import { useModal } from '../Modal/Modal.context';
@@ -108,7 +107,7 @@ const EventForm = ({ onSubmit }) => {
                 error={errors.name && touched.name}
                 helperText={touched.name ? errors.name : ''}
               />
-              <TextAreaField
+              <TextInputField
                 label="Description"
                 name="description"
                 value={values.description}
@@ -116,15 +115,6 @@ const EventForm = ({ onSubmit }) => {
                 onBlur={handleBlur}
                 error={errors.description && touched.description}
                 helperText={touched.description ? errors.description : ''}
-                css={`
-                  height: 100%;
-                  min-height: 144px;
-
-                  textarea {
-                    flex-grow: 1;
-                    resize: none;
-                  }
-                `}
               />
 
               <Switcher threshold="120px" space="1rem" limit={2}>
