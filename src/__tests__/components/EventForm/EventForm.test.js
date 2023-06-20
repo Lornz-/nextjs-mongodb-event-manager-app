@@ -3,11 +3,12 @@ import React from 'react';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-// config
+// config
 import { ErrorMessages } from '@/config/constants';
 
 // components
 import EventForm from '@/components/EventForm';
+import { ModalProvider } from '@/components/Modal/Modal.context';
 
 const eventTest = {
   name: 'My super event',
@@ -16,13 +17,21 @@ const eventTest = {
   endDate: '2023-09-09T08:00',
 };
 
+const TestingWrapper = ({ onSubmit }) => {
+  return (
+    <ModalProvider>
+      <EventForm onSubmit={onSubmit} />
+    </ModalProvider>
+  );
+};
+
 jest.mock('next/router', () => require('next-router-mock'));
 
 describe('EventForm tests', () => {
   it('should submit with valid user inputs', async () => {
     const handleSubmit = jest.fn();
 
-    render(<EventForm onSubmit={handleSubmit} />);
+    render(<TestingWrapper onSubmit={handleSubmit} />);
     const user = userEvent.setup();
 
     const name = screen.getByLabelText(/name/i);
@@ -52,7 +61,7 @@ describe('EventForm tests', () => {
     const promise = Promise.resolve();
     const handleSubmit = jest.fn(() => promise);
 
-    render(<EventForm onSubmit={handleSubmit} />);
+    render(<TestingWrapper onSubmit={handleSubmit} />);
 
     const user = userEvent.setup();
 
@@ -79,7 +88,7 @@ describe('EventForm tests', () => {
   it('should failed on blur when entered name is under min characters limit', async () => {
     const handleSubmit = jest.fn();
 
-    render(<EventForm onSubmit={handleSubmit} />);
+    render(<TestingWrapper onSubmit={handleSubmit} />);
 
     const name = screen.getByLabelText(/name/i);
 
@@ -96,7 +105,7 @@ describe('EventForm tests', () => {
   it('should failed on blur when entered name is over max characters limit', async () => {
     const handleSubmit = jest.fn();
 
-    render(<EventForm onSubmit={handleSubmit} />);
+    render(<TestingWrapper onSubmit={handleSubmit} />);
 
     const name = screen.getByLabelText(/name/i);
 
@@ -113,7 +122,7 @@ describe('EventForm tests', () => {
   it('should failed on blur when entered description is under min characters limit', async () => {
     const handleSubmit = jest.fn();
 
-    render(<EventForm onSubmit={handleSubmit} />);
+    render(<TestingWrapper onSubmit={handleSubmit} />);
 
     const description = screen.getByLabelText(/description/i);
 
@@ -132,7 +141,7 @@ describe('EventForm tests', () => {
   it('should failed on blur when entered description is over max characters limit', async () => {
     const handleSubmit = jest.fn();
 
-    render(<EventForm onSubmit={handleSubmit} />);
+    render(<TestingWrapper onSubmit={handleSubmit} />);
 
     const description = screen.getByLabelText(/description/i);
 
@@ -154,7 +163,7 @@ describe('EventForm tests', () => {
   it('should failed on blur when entered start date is sooner than current date', async () => {
     const handleSubmit = jest.fn();
 
-    render(<EventForm onSubmit={handleSubmit} />);
+    render(<TestingWrapper onSubmit={handleSubmit} />);
 
     const startDate = screen.getByLabelText(/begins/i);
 
@@ -173,7 +182,7 @@ describe('EventForm tests', () => {
   it('should failed on blur when entered end date is sooner than entered start date', async () => {
     const handleSubmit = jest.fn();
 
-    render(<EventForm onSubmit={handleSubmit} />);
+    render(<TestingWrapper onSubmit={handleSubmit} />);
 
     const startDate = screen.getByLabelText(/begins/i);
     const endDate = screen.getByLabelText(/ends/i);
