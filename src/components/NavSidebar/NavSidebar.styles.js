@@ -18,13 +18,6 @@ export const Nav = styled.nav`
   display: flex;
   flex-direction: column;
 
-  a {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 12px 16px;
-  }
-
   svg {
     width: 24px;
     height: 24px;

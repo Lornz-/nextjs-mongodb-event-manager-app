@@ -8,6 +8,7 @@ import IconHome from '@/images/IconHome';
 
 // styles
 import { Container, Nav, NavWrapper, Top } from './NavSidebar.styles';
+import ActiveLink from '../ActiveLink';
 
 const NavSidebar = () => {
   return (
@@ -16,14 +17,14 @@ const NavSidebar = () => {
 
       <NavWrapper>
         <Nav>
-          <Link href="/">
+          <ActiveLink href="/">
             <IconHome />
             <span>Home</span>
-          </Link>
-          <Link href="/events">
+          </ActiveLink>
+          <ActiveLink href="/events">
             <IconCalendar />
             <span>Events</span>
-          </Link>
+          </ActiveLink>
         </Nav>
       </NavWrapper>
     </Container>

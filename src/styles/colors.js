@@ -7,6 +7,7 @@ export default css`
   --color-light-grey: #efefef;
   --color-neutral: #0e0f0c1f;
   --color-primary: #1f0033;
+  --color-secondary: #6d00b2;
   --color-accent: #dba2ff;
   --color-error: #c1121f;
 
