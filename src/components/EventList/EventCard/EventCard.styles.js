@@ -1,5 +1,6 @@
 // vendors
 import { css, styled } from 'styled-components';
+import { em, rem } from 'polished';
 
 // components
 import Paper from '@/components/Paper';
@@ -45,6 +46,14 @@ export const Wrapper = styled(Paper)`
   }
 
   ${({ $faded }) => $faded && fadedStyle};
+`;
+
+export const Description = styled.p`
+  font-size: ${rem(15)};
+  font-weight: 400;
+  line-height: ${18 / 14};
+
+  margin-top: ${em(4)};
 `;
 
 export const Date = styled.div`
