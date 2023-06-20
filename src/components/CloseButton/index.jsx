@@ -8,12 +8,12 @@ import randomString from '@/utils/math/randomString';
 // styles
 import { Button, IconCross } from './CloseButton.styles';
 
-const CloseButton = ({ id, onClose, ...rest }) => {
-  const buttonId = id || randomString();
+const CloseButton = ({ onClose, ...rest }) => {
+  const labelId = randomString();
 
   return (
-    <Button aria-labelledby={buttonId} onClick={onClose} {...rest}>
-      <span id={buttonId}>Close</span>
+    <Button aria-labelledby={labelId} onClick={onClose} {...rest}>
+      <span id={labelId}>Close</span>
 
       <IconCross aria-hidden="true" focusable="false" />
     </Button>
@@ -22,17 +22,9 @@ const CloseButton = ({ id, onClose, ...rest }) => {
 
 CloseButton.propTypes = {
   /**
-   * Specifies the id of the button
-   */
-  id: PropTypes.string,
-  /**
    * Specifies the function to be called on close
    */
   onClose: PropTypes.func.isRequired,
-};
-
-CloseButton.defaultProps = {
-  id: undefined,
 };
 
 export default CloseButton;
