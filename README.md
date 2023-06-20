@@ -2,6 +2,8 @@
 
 ## Demo
 
+[https://nextjs-mongodb-events-manager-app.vercel.app/events](https://nextjs-mongodb-events-manager-app.vercel.app/events)
+
 ## About the app
 
 An event manager application with [Next.js](https://nextjs.org/), [MongoDB](https://www.mongodb.com/), [Mongoose](https://mongoosejs.com/docs/) and a minimalist UI based on [Styled Components 💅](https://styled-components.com/docs).
