@@ -3,7 +3,7 @@
   "plugins": ["prettier"],
   "rules": {
     "formatjs/no-offset": 0,
-    "prettier/prettier": 0,
+    "prettier/prettier": 1,
     "no-restricted-exports": 0,
     "import/no-extraneous-dependencies": [
       "error",
@@ -24,7 +24,7 @@
         "extensions": [".js", ".jsx"]
       }
     ],
-    "react/jsx-props-no-spreading": 1,
+    "react/jsx-props-no-spreading": 0,
     "react/no-unknown-property": ["error", { "ignore": ["css"] }]
   },
   "env": {
