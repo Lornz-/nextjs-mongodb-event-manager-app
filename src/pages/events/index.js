@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import useEvents from '@/hooks/useUsers';
 
 // views
-import EventsPageView from './EventsPageView';
+import EventsPageView from '@/views/EventsPageView';
 
 const EventsPage = () => {
   const { events, isLoading, isError } = useEvents();

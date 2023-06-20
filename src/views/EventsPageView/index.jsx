@@ -1,8 +1,10 @@
 // vendors
 import React, { useMemo } from 'react';
+import { em } from 'polished';
 
 // utils
 import randomString from '@/utils/math/randomString';
+import { fetcher } from '@/utils/fetch';
 
 // components
 import EventList from '@/components/EventList';
@@ -13,11 +15,12 @@ import Modal from '@/components/Modal';
 import EventForm from '@/components/EventForm';
 import Center from '@/components/LayoutSections/Center';
 import CloseButton from '@/components/CloseButton';
+import Stack from '@/components/LayoutSections/Stack';
 import { useModal } from '@/components/Modal/Modal.context';
-import { fetcher } from '@/utils/fetch';
 
 // images
 import IconPlus from '@/images/IconPlus';
+import VectorLoader from '@/images/VectorLoader';
 
 // styles
 import { h1Style } from '@/styles/global';
@@ -30,13 +33,9 @@ import {
   modalTitleStyle,
   wrapperStyle,
 } from './EventsPageView.styles';
-import Stack from '@/components/LayoutSections/Stack';
-import { em } from 'polished';
-import VectorLoader from '@/images/VectorLoader';
 
 const EventsPageView = ({ events, isLoading }) => {
   const { isOpen, open, close } = useModal();
-  // const router = useRouter();
 
   const customId = useMemo(() => randomString(), []);
 
