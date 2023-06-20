@@ -59,6 +59,7 @@ export const bodyStyle = css`
 
 export const h1Style = css`
   font-size: 2rem;
+  line-height: ${24 / 16};
 `;
 
 export const unstyledListStyle = css`
