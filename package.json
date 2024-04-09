@@ -39,7 +39,7 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "2.4.0",
     "react-modal": "^3.16.1",
-    "styled-components": "^6.0.0-rc.3",
+    "styled-components": "^6.1.8",
     "swr": "^2.1.5",
     "yup": "^1.2.0"
   },
